@@ -1,4 +1,4 @@
-package com.example.codeforcesandroidapp
+package com.kars.codeforcesmobile
 
 import org.junit.Test
 
