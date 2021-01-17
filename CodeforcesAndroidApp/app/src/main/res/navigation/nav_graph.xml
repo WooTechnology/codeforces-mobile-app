@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/upcomingContestFragment"
-        android:name="com.example.codeforcesandroidapp.UpcomingContestFragment"
+        android:name="com.example.codeforcesandroidapp.ui.contest.UpcomingContestFragment"
         android:label="fragment_upcoming_contest"
         tools:layout="@layout/fragment_upcoming_contest" />
 
