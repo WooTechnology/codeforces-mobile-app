@@ -1,6 +1,6 @@
 package com.example.codeforcesandroidapp.network
 
-import com.example.codeforcesandroidapp.network.service.ApiService
+import com.example.codeforcesandroidapp.network.services.ApiService
 import com.example.codeforcesandroidapp.utils.Constants.CODEFORCES_BASE_URL
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

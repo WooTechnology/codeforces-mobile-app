@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/upcomingContestFragment">
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.codeforcesandroidapp.ProfileFragment"
+        android:name="com.example.codeforcesandroidapp.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-        <action
-            android:id="@+id/action_profileFragment_to_upcomingContestFragment"
-            app:destination="@id/upcomingContestFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/upcomingContestFragment"
-        android:name="com.example.codeforcesandroidapp.ui.contest.UpcomingContestFragment"
+        android:name="com.example.codeforcesandroidapp.ui.contests.UpcomingContestFragment"
         android:label="fragment_upcoming_contest"
-        tools:layout="@layout/fragment_upcoming_contest" />
+        tools:layout="@layout/fragment_upcoming_contest" >
+        <action
+            android:id="@+id/action_upcomingContestFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
 </navigation>
