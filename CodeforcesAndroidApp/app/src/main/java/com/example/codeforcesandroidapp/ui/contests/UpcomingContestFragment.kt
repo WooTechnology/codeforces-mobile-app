@@ -60,7 +60,10 @@ class UpcomingContestFragment : Fragment(),ContestListAdapter.ContestOnClickList
         contestViewModel.contestList.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 Log.e("Contest List Fragment", it.toString())
-                contestAdapter.fillData(it)
+
+                val filtered = it.filter { it.phase == "BEFORE" }
+                val reversedList = filtered.asReversed()
+                contestAdapter.fillData(reversedList)
             }
         })
 
