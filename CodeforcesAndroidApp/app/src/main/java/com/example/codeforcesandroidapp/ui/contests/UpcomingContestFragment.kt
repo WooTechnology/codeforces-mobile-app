@@ -39,13 +39,14 @@ class UpcomingContestFragment : Fragment(),ContestListAdapter.ContestOnClickList
 
         //connected recyclerview to adapter
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         contestAdapter = ContestListAdapter()
         recyclerView.adapter = contestAdapter
         contestAdapter.setListener(this)
 
-        //calling API
+        //calling API and initialisation of the Repository
         contestRepository = ContestRepository_Impl(
             NetworkUtil.createCodeforcesService(NetworkUtil.createRetrofitClient()),
             ContestMapper()

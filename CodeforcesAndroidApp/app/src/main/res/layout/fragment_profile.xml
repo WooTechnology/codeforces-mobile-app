@@ -36,6 +36,7 @@
                 android:background="#F8F277"/>
 
             <TextView
+                android:id="@+id/ratingChanges"
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

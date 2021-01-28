@@ -7,6 +7,6 @@ data class ContestBusinessModel(
     val name:String,
     val type:String,
     val phase:String,
-    val durationSeconds:Int,
-    val startTimeSeconds:Int
+    val durationSeconds:Long,
+    val startTimeSeconds:Long
 )
