@@ -51,7 +51,8 @@ class RatingChangeAdapter : RecyclerView.Adapter<RatingChangeAdapter.RatingChang
             contestName.text = rating.contestName
             contestRank.text = SpannableStringBuilder().bold{ append("Rank: ")}.append(rating.rank.toString())
             rankUpdate.text = SpannableStringBuilder().bold { append("Updated on: ") }.append(Constants.convertEpochToStringDate(rating.ratingUpdateTimeSeconds))
-            
+
+            //add for 0 rating change
 
             if(rating.newRating-rating.oldRating>0){
                 ratingChange.text = "+${rating.newRating-rating.oldRating}"
