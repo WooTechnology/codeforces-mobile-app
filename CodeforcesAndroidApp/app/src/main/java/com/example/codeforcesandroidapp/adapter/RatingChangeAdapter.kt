@@ -18,7 +18,6 @@ class RatingChangeAdapter : RecyclerView.Adapter<RatingChangeAdapter.RatingChang
 
     private val ratingChangeList = ArrayList<RatingChangeBusinessModel>()
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingChangeViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rating_change,parent,false)
         return RatingChangeViewHolder(view)
