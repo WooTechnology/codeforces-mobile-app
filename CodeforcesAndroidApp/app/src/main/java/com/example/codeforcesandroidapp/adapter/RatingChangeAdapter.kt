@@ -12,6 +12,7 @@ import androidx.core.text.bold
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codeforcesandroidapp.R
 import com.example.codeforcesandroidapp.model.profile.RatingChangeBusinessModel
+import com.example.codeforcesandroidapp.utils.Constants
 
 class RatingChangeAdapter : RecyclerView.Adapter<RatingChangeAdapter.RatingChangeViewHolder>() {
 
@@ -23,7 +24,6 @@ class RatingChangeAdapter : RecyclerView.Adapter<RatingChangeAdapter.RatingChang
         return RatingChangeViewHolder(view)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RatingChangeViewHolder, position: Int) {
         holder.bindingView(ratingChangeList[position])
     }
@@ -47,13 +47,11 @@ class RatingChangeAdapter : RecyclerView.Adapter<RatingChangeAdapter.RatingChang
         private var rankUpdate : TextView = itemView.findViewById(R.id.rankUpdated)
         private var ratingChange : TextView = itemView.findViewById(R.id.ratingChange)
 
-        @RequiresApi(Build.VERSION_CODES.O)
         fun bindingView(rating : RatingChangeBusinessModel){
 
             contestName.text = rating.contestName
             contestRank.text = SpannableStringBuilder().bold{ append("Rank: ")}.append(rating.rank.toString())
-            rankUpdate.text = SpannableStringBuilder().bold { append("Updated on: ") }.append(java.time.format.DateTimeFormatter.ISO_INSTANT
-                .format(java.time.Instant.ofEpochSecond(rating.ratingUpdateTimeSeconds)))
+            rankUpdate.text = SpannableStringBuilder().bold { append("Updated on: ") }.append(Constants.convertEpochToStringDate(rating.ratingUpdateTimeSeconds))
             
 
             if(rating.newRating-rating.oldRating>0){

@@ -12,6 +12,7 @@ import androidx.core.text.bold
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codeforcesandroidapp.R
 import com.example.codeforcesandroidapp.model.contests.ContestBusinessModel
+import com.example.codeforcesandroidapp.utils.Constants.convertEpochToStringDate
 import com.example.codeforcesandroidapp.utils.Constants.convertSecondsToHours
 
 class ContestListAdapter : RecyclerView.Adapter<ContestListAdapter.ContestListViewHolder>() {
@@ -30,7 +31,7 @@ class ContestListAdapter : RecyclerView.Adapter<ContestListAdapter.ContestListVi
         return contestList.size
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onBindViewHolder(holder: ContestListViewHolder, position: Int) {
 
         holder.bindingView(contestList[position])
@@ -52,12 +53,11 @@ class ContestListAdapter : RecyclerView.Adapter<ContestListAdapter.ContestListVi
         private var startTime : TextView = itemView.findViewById(R.id.contestStartTime)
         private var duration : TextView = itemView.findViewById(R.id.contestDuration)
 
-        @RequiresApi(Build.VERSION_CODES.O)
+
         fun bindingView(contest:ContestBusinessModel){
 
             contestName.text = contest.name
-            startTime.text = SpannableStringBuilder().bold { append("Contest starts on: ") }.append(java.time.format.DateTimeFormatter.ISO_INSTANT
-                .format(java.time.Instant.ofEpochSecond(contest.startTimeSeconds)))
+            startTime.text = SpannableStringBuilder().bold { append("Contest starts on: ") }.append(convertEpochToStringDate(contest.startTimeSeconds))
             duration.text = SpannableStringBuilder().bold { append("Contest Duration: ") }.append(convertSecondsToHours(contest.durationSeconds))
 
             itemView.setOnClickListener{
