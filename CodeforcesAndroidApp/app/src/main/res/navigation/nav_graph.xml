@@ -9,7 +9,14 @@
         android:id="@+id/profileFragment"
         android:name="com.example.codeforcesandroidapp.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_ratingChangesFragment"
+            app:destination="@id/ratingChangesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_recentSubmissionsFragment"
+            app:destination="@id/recentSubmissionsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/upcomingContestFragment"
@@ -20,5 +27,15 @@
             android:id="@+id/action_upcomingContestFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/ratingChangesFragment"
+        android:name="com.example.codeforcesandroidapp.ui.profile.ratingChanges.RatingChangesFragment"
+        android:label="RatingChangesFragment"
+        tools:layout="@layout/fragment_rating_changes"/>
+    <fragment
+        android:id="@+id/recentSubmissionsFragment"
+        android:name="com.example.codeforcesandroidapp.ui.profile.recentSubmissions.RecentSubmissionsFragment"
+        android:label="RecentSubmissionsFragment" />
 
 </navigation>

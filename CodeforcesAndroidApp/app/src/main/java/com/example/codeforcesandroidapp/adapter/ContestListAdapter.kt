@@ -1,15 +1,19 @@
 package com.example.codeforcesandroidapp.adapter
 
+import android.os.Build
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.text.bold
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codeforcesandroidapp.R
 import com.example.codeforcesandroidapp.model.contests.ContestBusinessModel
+import com.example.codeforcesandroidapp.utils.Constants.convertEpochToStringDate
+import com.example.codeforcesandroidapp.utils.Constants.convertSecondsToHours
 
 class ContestListAdapter : RecyclerView.Adapter<ContestListAdapter.ContestListViewHolder>() {
 
@@ -26,6 +30,7 @@ class ContestListAdapter : RecyclerView.Adapter<ContestListAdapter.ContestListVi
     override fun getItemCount(): Int {
         return contestList.size
     }
+
 
     override fun onBindViewHolder(holder: ContestListViewHolder, position: Int) {
 
@@ -48,11 +53,12 @@ class ContestListAdapter : RecyclerView.Adapter<ContestListAdapter.ContestListVi
         private var startTime : TextView = itemView.findViewById(R.id.contestStartTime)
         private var duration : TextView = itemView.findViewById(R.id.contestDuration)
 
+
         fun bindingView(contest:ContestBusinessModel){
 
             contestName.text = contest.name
-            startTime.text = SpannableStringBuilder().bold { append("Contest starts on: ") }.append(contest.startTimeSeconds.toString())
-            duration.text = SpannableStringBuilder().bold { append("Contest Duration: ") }.append(contest.durationSeconds.toString())
+            startTime.text = SpannableStringBuilder().bold { append("Contest starts on: ") }.append(convertEpochToStringDate(contest.startTimeSeconds))
+            duration.text = SpannableStringBuilder().bold { append("Contest Duration: ") }.append(convertSecondsToHours(contest.durationSeconds))
 
             itemView.setOnClickListener{
                 listener.onClickContest(contest)
@@ -60,6 +66,7 @@ class ContestListAdapter : RecyclerView.Adapter<ContestListAdapter.ContestListVi
 
         }
     }
+
 
     interface ContestOnClickListener{
         fun onClickContest(contest : ContestBusinessModel)

@@ -39,13 +39,14 @@ class UpcomingContestFragment : Fragment(),ContestListAdapter.ContestOnClickList
 
         //connected recyclerview to adapter
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         contestAdapter = ContestListAdapter()
         recyclerView.adapter = contestAdapter
         contestAdapter.setListener(this)
 
-        //calling API
+        //calling API and initialisation of the Repository
         contestRepository = ContestRepository_Impl(
             NetworkUtil.createCodeforcesService(NetworkUtil.createRetrofitClient()),
             ContestMapper()
@@ -60,7 +61,10 @@ class UpcomingContestFragment : Fragment(),ContestListAdapter.ContestOnClickList
         contestViewModel.contestList.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 Log.e("Contest List Fragment", it.toString())
-                contestAdapter.fillData(it)
+
+                val filtered = it.filter { it.phase == "BEFORE" }
+                val reversedList = filtered.asReversed()
+                contestAdapter.fillData(reversedList)
             }
         })
 
