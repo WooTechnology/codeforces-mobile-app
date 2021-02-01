@@ -30,6 +30,10 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_ratingChangesFragment)
         }
 
+        view.findViewById<TextView>(R.id.recentSubmissions).setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_recentSubmissionsFragment)
+        }
+
     }
 
 

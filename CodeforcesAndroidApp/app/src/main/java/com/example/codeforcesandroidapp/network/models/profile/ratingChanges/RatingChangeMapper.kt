@@ -1,4 +1,4 @@
-package com.example.codeforcesandroidapp.network.models.profile
+package com.example.codeforcesandroidapp.network.models.profile.ratingChanges
 
 
 import com.example.codeforcesandroidapp.model.profile.RatingChangeBusinessModel

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_profileFragment_to_ratingChangesFragment"
             app:destination="@id/ratingChangesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_recentSubmissionsFragment"
+            app:destination="@id/recentSubmissionsFragment" />
     </fragment>
 
     <fragment
@@ -30,5 +33,9 @@
         android:name="com.example.codeforcesandroidapp.ui.profile.ratingChanges.RatingChangesFragment"
         android:label="RatingChangesFragment"
         tools:layout="@layout/fragment_rating_changes"/>
+    <fragment
+        android:id="@+id/recentSubmissionsFragment"
+        android:name="com.example.codeforcesandroidapp.ui.profile.recentSubmissions.RecentSubmissionsFragment"
+        android:label="RecentSubmissionsFragment" />
 
 </navigation>

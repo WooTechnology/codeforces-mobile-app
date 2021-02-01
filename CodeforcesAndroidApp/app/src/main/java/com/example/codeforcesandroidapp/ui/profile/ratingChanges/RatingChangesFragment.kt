@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.codeforcesandroidapp.R
 import com.example.codeforcesandroidapp.adapter.RatingChangeAdapter
 import com.example.codeforcesandroidapp.network.NetworkUtil
-import com.example.codeforcesandroidapp.network.models.profile.RatingChangeMapper
+import com.example.codeforcesandroidapp.network.models.profile.ratingChanges.RatingChangeMapper
 import com.example.codeforcesandroidapp.repository.profile.RatingChangesRepository
 import com.example.codeforcesandroidapp.repository.profile.RatingChangesRepository_Impl
 
@@ -42,6 +42,7 @@ class RatingChangesFragment : Fragment() {
         recyclerView.adapter = ratingAdapter
 
 
+        //API call work starts
         ratingRepository = RatingChangesRepository_Impl(apiService = NetworkUtil.createCodeforcesService(NetworkUtil.createRetrofitClient()),
             ratingChangesMapper = RatingChangeMapper()
         )
@@ -54,7 +55,8 @@ class RatingChangesFragment : Fragment() {
         ratingViewModel.ratingList.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 Log.e("Rating List Fragment", it.toString())
-                ratingAdapter.fillData(it)
+                val filtered = it.asReversed()
+                ratingAdapter.fillData(filtered)
             }
         })
 

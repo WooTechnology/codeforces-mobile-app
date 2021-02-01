@@ -2,8 +2,8 @@ package com.example.codeforcesandroidapp.repository.profile
 
 import android.util.Log
 import com.example.codeforcesandroidapp.model.profile.RatingChangeBusinessModel
-import com.example.codeforcesandroidapp.network.models.profile.RatingChangeMapper
-import com.example.codeforcesandroidapp.network.models.profile.RatingResponse
+import com.example.codeforcesandroidapp.network.models.profile.ratingChanges.RatingChangeMapper
+import com.example.codeforcesandroidapp.network.models.profile.ratingChanges.RatingResponse
 import com.example.codeforcesandroidapp.network.services.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
