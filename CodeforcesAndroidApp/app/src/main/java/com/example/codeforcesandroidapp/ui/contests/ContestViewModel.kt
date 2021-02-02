@@ -10,11 +10,14 @@ import kotlinx.coroutines.launch
 class ContestViewModel(private val contestRepository:ContestsRepository): ViewModel() {
 
     var contestList = MutableLiveData<List<ContestBusinessModel>>()
+    var isLoading : MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun fetchContests(){
+        isLoading.value = true
         viewModelScope.launch{
             contestRepository.fetchcontest {
                 contestList.value=it
+                isLoading.value = false
             }
 
         }

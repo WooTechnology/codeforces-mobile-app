@@ -1,6 +1,7 @@
 package com.example.codeforcesandroidapp.repository.contests
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.codeforcesandroidapp.model.contests.ContestBusinessModel
 import com.example.codeforcesandroidapp.network.models.contests.ContestMapper
 import com.example.codeforcesandroidapp.network.models.contests.ContestResponse
@@ -12,6 +13,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ContestRepository_Impl (private val apiService:ApiService, private val contestMapper:ContestMapper):ContestsRepository {
+
+
 
     override suspend fun fetchcontest(callback: (List<ContestBusinessModel>) -> Unit) {
 
@@ -25,10 +28,12 @@ class ContestRepository_Impl (private val apiService:ApiService, private val con
 
                         callback(contestMapper.fromNetworkModelListtoBusinessModelList(response.body()!!.results!!))
                     }
+
                 }
 
                 override fun onFailure(call: Call<ContestResponse>, t: Throwable) {
                     Log.e("ContestFetchFailed",t.toString())
+
                 }
             })
         }
