@@ -5,16 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codeforcesandroidapp.R
-import com.example.codeforcesandroidapp.adapter.RatingChangeAdapter
 import com.example.codeforcesandroidapp.adapter.RecentSubmissionsAdapter
 import com.example.codeforcesandroidapp.network.NetworkUtil
-import com.example.codeforcesandroidapp.network.models.profile.ratingChanges.RatingChangeMapper
 import com.example.codeforcesandroidapp.network.models.profile.recentSubmissions.RecentSubmissionsMapper
 import com.example.codeforcesandroidapp.repository.profile.RatingChangesRepository_Impl
 import com.example.codeforcesandroidapp.repository.profile.RecentSubmissionsRepository
@@ -27,12 +26,14 @@ class RecentSubmissionsFragment : Fragment() {
     private lateinit var submissionsRepo : RecentSubmissionsRepository
     private lateinit var submissionsViewModel : RecentSubmissionsViewModel
     private lateinit var submissionsAdapter : RecentSubmissionsAdapter
+    private var isLoading : Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_recent_submissions, container, false)
     }
 
@@ -42,10 +43,12 @@ class RecentSubmissionsFragment : Fragment() {
 
         //adapter
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
 
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         submissionsAdapter = RecentSubmissionsAdapter()
         recyclerView.adapter = submissionsAdapter
+
 
 
         //API call work starts
@@ -64,6 +67,18 @@ class RecentSubmissionsFragment : Fragment() {
                 Log.e("SubmissionListFragment", it.toString())
                 val filtered = it.asReversed()
                 submissionsAdapter.fillData(filtered)
+
+            }
+        })
+
+        submissionsViewModel.isLoading.observe(viewLifecycleOwner, {
+            if(it!=null){
+                isLoading = it
+                if(it){
+                    progressBar.visibility = View.VISIBLE
+                } else {
+                    progressBar.visibility = View.GONE
+                }
             }
         })
 

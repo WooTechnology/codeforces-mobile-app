@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,7 @@ class RatingChangesFragment : Fragment() {
     private lateinit var ratingViewModel: RatingChangesViewModel
     private lateinit var ratingRepository: RatingChangesRepository
     private lateinit var ratingAdapter: RatingChangeAdapter
+    private var isLoading : Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +38,7 @@ class RatingChangesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        val progressBar = view.findViewById<ProgressBar>(R.id.progressBar3)
 
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         ratingAdapter = RatingChangeAdapter()
@@ -57,6 +60,17 @@ class RatingChangesFragment : Fragment() {
                 Log.e("Rating List Fragment", it.toString())
                 val filtered = it.asReversed()
                 ratingAdapter.fillData(filtered)
+            }
+        })
+
+        ratingViewModel.isLoading.observe(viewLifecycleOwner,{
+            if(it!=null){
+                isLoading = it
+                if(it){
+                    progressBar.visibility = View.VISIBLE
+                } else {
+                    progressBar.visibility = View.GONE
+                }
             }
         })
 

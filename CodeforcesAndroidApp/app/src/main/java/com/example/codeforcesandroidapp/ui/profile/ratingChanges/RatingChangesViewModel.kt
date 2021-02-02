@@ -10,11 +10,15 @@ import kotlinx.coroutines.launch
 class RatingChangesViewModel(private val ratingChangesRepo : RatingChangesRepository) : ViewModel() {
 
     var ratingList = MutableLiveData<List<RatingChangeBusinessModel>>()
+    var isLoading : MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun fetchRating(){
+        isLoading.value = true
+
         viewModelScope.launch {
             ratingChangesRepo.fetchratingchanges {
                 ratingList.value = it
+                isLoading.value = false
             }
         }
     }

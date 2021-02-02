@@ -10,12 +10,16 @@ import kotlinx.coroutines.launch
 class RecentSubmissionsViewModel(private val recentSubmissionsRepo : RecentSubmissionsRepository): ViewModel() {
 
     var submissionsList = MutableLiveData<List<RecentSubmissionsBusinessModel>>()
+    var isLoading : MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun fetchSubmissions(){
+        isLoading.value = true
         viewModelScope.launch {
             recentSubmissionsRepo.fetchrecentsubmissions {
                 submissionsList.value = it
+                isLoading.value = false
             }
+
         }
     }
 }
