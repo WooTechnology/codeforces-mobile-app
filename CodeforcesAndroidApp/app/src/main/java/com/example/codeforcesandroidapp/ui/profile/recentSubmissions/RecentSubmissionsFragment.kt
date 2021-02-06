@@ -51,7 +51,9 @@ class RecentSubmissionsFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
 
+
         layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = layoutManager
         submissionsAdapter = RecentSubmissionsAdapter()
         recyclerView.adapter = submissionsAdapter
 
@@ -77,7 +79,7 @@ class RecentSubmissionsFragment : Fragment() {
                 val isTotalMorethanVisible = totalItemCount>=PAGE_SIZE
 
                 if(!isLoading && !isLastPage && isAtLastItem && firstVisibleItemPosition>=0 && isTotalMorethanVisible && isScrolling){
-                    submissionsViewModel.fetchSubmissions()
+                    submissionsViewModel.fetchSubmissions("khushboo")
                 }
             }
         })
@@ -93,7 +95,7 @@ class RecentSubmissionsFragment : Fragment() {
 
 
         submissionsViewModel = ViewModelProvider(this, submissionsViewModelFactory).get(RecentSubmissionsViewModel::class.java)
-        submissionsViewModel.fetchSubmissions()
+        submissionsViewModel.fetchSubmissions("khushboo")
 
         //for observing the main submissions output
         submissionsViewModel.submissionsList.observe(viewLifecycleOwner, Observer {

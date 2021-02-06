@@ -4,5 +4,5 @@ import com.example.codeforcesandroidapp.model.profile.RecentSubmissionsBusinessM
 
 interface RecentSubmissionsRepository {
 
-    suspend fun fetchrecentsubmissions(callback : (List<RecentSubmissionsBusinessModel>) -> Unit)
+    suspend fun fetchrecentsubmissions(handle : String, from : Int, callback : (List<RecentSubmissionsBusinessModel>) -> Unit)
 }
