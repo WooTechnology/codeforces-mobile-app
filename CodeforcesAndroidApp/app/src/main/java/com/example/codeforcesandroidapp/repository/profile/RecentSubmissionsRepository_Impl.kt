@@ -13,6 +13,8 @@ import retrofit2.Response
 
 class RecentSubmissionsRepository_Impl(private val apiService: ApiService, private val recentSubmissionsMapper: RecentSubmissionsMapper) : RecentSubmissionsRepository {
 
+    var submissionsPage = 1
+
     override suspend fun fetchrecentsubmissions(callback: (List<RecentSubmissionsBusinessModel>) -> Unit) {
 
         withContext(Dispatchers.IO){
@@ -22,7 +24,7 @@ class RecentSubmissionsRepository_Impl(private val apiService: ApiService, priva
                     response: Response<SubmissionsResponse>
                 ) {
                     if(response.isSuccessful && response.body()!=null){
-
+                        submissionsPage++
                         callback(recentSubmissionsMapper.fromNetworkModelListtoBusinessModelList(response.body()!!.result!!))
                     }
                 }

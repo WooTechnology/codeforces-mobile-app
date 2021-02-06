@@ -5,6 +5,7 @@ import java.util.*
 
 object Constants {
     const val CODEFORCES_BASE_URL = "https://codeforces.com/api/"
+    const val PAGE_SIZE = 10
 
     fun convertSecondsToHours(seconds:Long) : String{
         var sec = seconds

@@ -12,55 +12,68 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardBackgroundColor="@color/cardColor"
+        app:cardCornerRadius="10dp"
+        app:contentPadding="20dp"
+        app:cardElevation="8dp">
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="4dp">
+                android:padding="4dp"
+                android:layout_weight="0.8">
 
                 <TextView
                     android:id="@+id/contestName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/ubuntu_medium"
                     android:text="Contest Name"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/contestRank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:textSize="14sp"
                     android:layout_marginTop="12dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/ubuntu_medium"
                     android:text="Contest Rank" />
 
                 <TextView
                     android:id="@+id/rankUpdated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:layout_marginTop="4dp"
                     android:textSize="14sp"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/ubuntu_medium"
                     android:text="Date of Rank Update" />
 
-                <TextView
-                    android:id="@+id/ratingChange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rating Change"
-                    android:textColor="#8BC34A"
-                    android:textSize="16sp"
-                    android:fontFamily="sans-serif-medium" />
-
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/ratingChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Rating Change"
+                android:gravity="center_vertical"
+                android:textColor="#8BC34A"
+                android:textSize="20sp" />
+
+        </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>

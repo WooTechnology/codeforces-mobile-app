@@ -12,7 +12,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardBackgroundColor="@color/cardColor"
+        app:cardCornerRadius="10dp"
+        app:contentPadding="20dp"
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -25,30 +29,33 @@
                 android:id="@+id/contestName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/ubuntu_medium"
                 android:text="Contest Name"
-                android:textColor="#000"
-                android:textSize="16sp" />
+                android:textColor="#FFF"
+                android:textSize="18sp"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/contestStartTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="#FFF"
                 android:textSize="14sp"
                 android:layout_marginTop="12dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Contest Start Time" />
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Contest Start Time"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/contestDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="#FFF"
                 android:layout_marginTop="4dp"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Contest Duration" />
+                android:fontFamily="@font/ubuntu_medium"
+                android:text="Contest Duration"
+                android:gravity="center"/>
 
         </LinearLayout>
 

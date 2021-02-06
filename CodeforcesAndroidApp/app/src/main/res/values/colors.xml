@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="passed">#8BC34A</color>
     <color name="failed">#F44336</color>
+    <color name="cardColor">#051768</color>
+    <color name="main">#6273C0</color>
 </resources>

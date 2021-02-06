@@ -11,12 +11,17 @@ class RecentSubmissionsViewModel(private val recentSubmissionsRepo : RecentSubmi
 
     var submissionsList = MutableLiveData<List<RecentSubmissionsBusinessModel>>()
     var isLoading : MutableLiveData<Boolean> = MutableLiveData(false)
+    var isLastPage : MutableLiveData<Boolean> = MutableLiveData(false)
+    var from : MutableLiveData<Int> = MutableLiveData(1)
 
     fun fetchSubmissions(){
+
         isLoading.value = true
+
         viewModelScope.launch {
             recentSubmissionsRepo.fetchrecentsubmissions {
                 submissionsList.value = it
+                isLastPage.value = true
                 isLoading.value = false
             }
 

@@ -5,103 +5,70 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <LinearLayout
+
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:columnCount="2"
+        android:padding="16dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Additional Information"
-            android:textColor="#000"
-            android:textSize="16sp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="10dp"
-            android:fontFamily="sans-serif-medium" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/recentSubmissions"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Recent Submissions"
-                android:textColor="#000"
-                android:textSize="16sp"
-                android:layout_margin="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:background="#F8F277"/>
-
-            <TextView
-                android:id="@+id/ratingChanges"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rating Changes"
-                android:textColor="#000"
-                android:textSize="16sp"
-                android:layout_margin="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:background="#F8F277"/>
-
-            <TextView
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Statistics"
-                android:textColor="#000"
-                android:textSize="16sp"
-                android:layout_margin="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:background="#F8F277"/>
-
-
-        </LinearLayout>
+            android:background="@color/cardColor"
+            android:fontFamily="sans-serif-medium"
+            android:padding="10dp"
+            android:text="My Preferences"
+            android:textColor="#FFF"
+            android:textSize="16sp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
-            android:textColor="#000"
-            android:textSize="16sp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="10dp"
-            android:fontFamily="sans-serif-medium" />
+            android:background="@color/cardColor"
+            android:fontFamily="sans-serif-medium"
+            android:padding="10dp"
+            android:text="About"
+            android:textColor="#FFF"
+            android:textSize="16sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/recentSubmissions"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="10dp"
+            android:background="@color/cardColor"
+            android:fontFamily="sans-serif-medium"
+            android:padding="10dp"
+            android:text="Recent Submissions"
+            android:textColor="#FFF"
+            android:textSize="16sp" />
 
-            <TextView
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Preferences"
-                android:textColor="#000"
-                android:textSize="16sp"
-                android:layout_margin="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:background="#F8F277"/>
-
-            <TextView
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="About"
-                android:textColor="#000"
-                android:textSize="16sp"
-                android:layout_margin="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:background="#F8F277"/>
+        <TextView
+            android:id="@+id/ratingChanges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="10dp"
+            android:background="@color/cardColor"
+            android:fontFamily="sans-serif-medium"
+            android:padding="10dp"
+            android:text="Rating Changes"
+            android:textColor="#FFF"
+            android:textSize="16sp" />
 
 
-        </LinearLayout>
+    </GridLayout>
 
-    </LinearLayout>
 
 
 </FrameLayout>
