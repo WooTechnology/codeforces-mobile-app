@@ -13,16 +13,16 @@ import retrofit2.Response
 
 class RecentSubmissionsRepository_Impl(private val apiService: ApiService, private val recentSubmissionsMapper: RecentSubmissionsMapper) : RecentSubmissionsRepository {
 
-    override suspend fun fetchrecentsubmissions(callback: (List<RecentSubmissionsBusinessModel>) -> Unit) {
+
+    override suspend fun fetchrecentsubmissions(handle : String, from : Int, callback: (List<RecentSubmissionsBusinessModel>) -> Unit) {
 
         withContext(Dispatchers.IO){
-            apiService.fetchRecentSubmissionsList().enqueue(object: Callback<SubmissionsResponse> {
+            apiService.fetchRecentSubmissionsList(handle,from).enqueue(object: Callback<SubmissionsResponse> {
                 override fun onResponse(
                     call: Call<SubmissionsResponse>,
                     response: Response<SubmissionsResponse>
                 ) {
                     if(response.isSuccessful && response.body()!=null){
-
                         callback(recentSubmissionsMapper.fromNetworkModelListtoBusinessModelList(response.body()!!.result!!))
                     }
                 }

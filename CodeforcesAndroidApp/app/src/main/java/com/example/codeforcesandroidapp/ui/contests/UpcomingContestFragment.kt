@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +25,8 @@ class UpcomingContestFragment : Fragment(),ContestListAdapter.ContestOnClickList
     private lateinit var contestViewModel: ContestViewModel
     private lateinit var contestRepository: ContestsRepository
     private lateinit var contestAdapter: ContestListAdapter
+    private var isLoading : Boolean = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +42,15 @@ class UpcomingContestFragment : Fragment(),ContestListAdapter.ContestOnClickList
 
         //connected recyclerview to adapter
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        val progressBar = view.findViewById<ProgressBar>(R.id.progressBar2)
+
 
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         contestAdapter = ContestListAdapter()
         recyclerView.adapter = contestAdapter
         contestAdapter.setListener(this)
+
 
         //calling API and initialisation of the Repository
         contestRepository = ContestRepository_Impl(
@@ -67,6 +73,20 @@ class UpcomingContestFragment : Fragment(),ContestListAdapter.ContestOnClickList
                 contestAdapter.fillData(reversedList)
             }
         })
+
+        //loading icon handled here
+        contestViewModel.isLoading.observe(viewLifecycleOwner, {
+            if(it!=null){
+                isLoading = it
+                if(it){
+                    progressBar.visibility = View.VISIBLE
+                } else {
+                    progressBar.visibility = View.GONE
+                }
+            }
+        })
+
+
 
     }
 

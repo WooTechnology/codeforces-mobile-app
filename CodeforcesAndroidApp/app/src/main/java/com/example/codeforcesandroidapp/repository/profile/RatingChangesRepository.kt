@@ -4,5 +4,5 @@ import com.example.codeforcesandroidapp.model.profile.RatingChangeBusinessModel
 
 interface RatingChangesRepository {
 
-    suspend fun fetchratingchanges(callback: (List<RatingChangeBusinessModel>) -> Unit)
+    suspend fun fetchratingchanges(handle: String,callback: (List<RatingChangeBusinessModel>) -> Unit)
 }
