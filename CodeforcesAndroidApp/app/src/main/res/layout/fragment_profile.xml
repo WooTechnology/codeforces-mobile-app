@@ -3,72 +3,284 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.profile.ProfileFragment">
 
-
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="10dp"
-            android:background="@color/cardColor"
-            android:fontFamily="sans-serif-medium"
-            android:padding="10dp"
-            android:text="My Preferences"
-            android:textColor="#FFF"
-            android:textSize="16sp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardBackgroundColor="@color/cardColor"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="20dp"
+            app:cardElevation="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="10dp"
-            android:background="@color/cardColor"
-            android:fontFamily="sans-serif-medium"
-            android:padding="10dp"
-            android:text="About"
-            android:textColor="#FFF"
-            android:textSize="16sp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/recentSubmissions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="10dp"
-            android:background="@color/cardColor"
-            android:fontFamily="sans-serif-medium"
-            android:padding="10dp"
-            android:text="Recent Submissions"
-            android:textColor="#FFF"
-            android:textSize="16sp" />
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/usernameCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/ratingChanges"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="10dp"
-            android:background="@color/cardColor"
-            android:fontFamily="sans-serif-medium"
-            android:padding="10dp"
-            android:text="Rating Changes"
-            android:textColor="#FFF"
-            android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/profileUsername"
+                        android:padding="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Username: "
+                        android:fontFamily="@font/ubuntu"/>
+
+                    <TextView
+                        android:id="@+id/profileRating"
+                        android:padding="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Current Rating: "
+                        android:fontFamily="@font/ubuntu"/>
+
+                    <TextView
+                        android:id="@+id/profileRank"
+                        android:padding="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Current Rank: "
+                        android:fontFamily="@font/ubuntu"/>
+
+                    <TextView
+                        android:id="@+id/profileContribution"
+                        android:padding="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Contributions: "
+                        android:fontFamily="@font/ubuntu"/>
 
 
-    </GridLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/editUsernameCard"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:gravity="center"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Codeforces Username"
+                        android:fontFamily="@font/ubuntu"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:textSize="24dp"
+                        />
+
+                    <EditText
+                        android:id="@+id/editUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Codeforces username"
+                        android:fontFamily="@font/ubuntu"
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:id="@+id/submitProfile"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="Done"
+                        android:textAllCaps="false"/>
+<!--                        android:background="@color/white"/>-->
+
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
+        </androidx.cardview.widget.CardView>
+
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/profileCard">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                app:cardBackgroundColor="@color/cardColor"
+                android:layout_rowWeight="1"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_preferences"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:tint="@color/white"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="My Preferences"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#FFF"
+                        android:textSize="16sp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                app:cardBackgroundColor="@color/cardColor"
+                android:layout_rowWeight="1"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_about"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:tint="@color/white"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="About"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#FFF"
+                        android:textSize="16sp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/recentSubmissions"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                app:cardBackgroundColor="@color/cardColor"
+                android:layout_rowWeight="1"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_submissions"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:tint="@color/white"/>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/cardColor"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="Recent Submissions"
+                        android:textColor="#FFF"
+                        android:textSize="16sp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ratingChanges"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                app:cardBackgroundColor="@color/cardColor"
+                android:layout_rowWeight="1"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_rank"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:tint="@color/white"/>
+
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/cardColor"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="Rating Changes"
+                        android:textColor="#FFF"
+                        android:textSize="16sp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+    </LinearLayout>
 </FrameLayout>

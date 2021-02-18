@@ -1,5 +1,6 @@
 package com.example.codeforcesandroidapp.ui.profile.recentSubmissions
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codeforcesandroidapp.R
@@ -28,6 +31,7 @@ class RecentSubmissionsFragment : Fragment() {
     private lateinit var submissionsRepo : RecentSubmissionsRepository
     private lateinit var submissionsViewModel : RecentSubmissionsViewModel
     private lateinit var submissionsAdapter : RecentSubmissionsAdapter
+    private var handle : String? = null
     private var isLoading : Boolean = false
     private var isLastPage : Boolean = false
     private var isScrolling : Boolean = false
@@ -38,8 +42,12 @@ class RecentSubmissionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
+
+        handle = context?.getSharedPreferences("user_handle", Context.MODE_PRIVATE)?.getString("handle", null)
+        Log.e("----handle---",handle.toString())
+
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recent_submissions, container, false)
     }
 
@@ -79,7 +87,7 @@ class RecentSubmissionsFragment : Fragment() {
                 val isTotalMorethanVisible = totalItemCount>=PAGE_SIZE
 
                 if(!isLoading && !isLastPage && isAtLastItem && firstVisibleItemPosition>=0 && isTotalMorethanVisible && isScrolling){
-                    submissionsViewModel.fetchSubmissions("khushboo")
+                    submissionsViewModel.fetchSubmissions(handle!!)
                 }
             }
         })
@@ -93,16 +101,14 @@ class RecentSubmissionsFragment : Fragment() {
 
         val submissionsViewModelFactory = RecentSubmissionsViewModelFactory(submissionsRepo)
 
-
         submissionsViewModel = ViewModelProvider(this, submissionsViewModelFactory).get(RecentSubmissionsViewModel::class.java)
-        submissionsViewModel.fetchSubmissions("khushboo")
+        submissionsViewModel.fetchSubmissions(handle!!)
 
         //for observing the main submissions output
         submissionsViewModel.submissionsList.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 Log.e("SubmissionListFragment", it.toString())
-                val filtered = it.asReversed()
-                submissionsAdapter.fillData(filtered)
+                submissionsAdapter.fillData(it)
 
             }
         })

@@ -13,10 +13,10 @@ import retrofit2.Response
 
 class RatingChangesRepository_Impl(private val apiService: ApiService, private val ratingChangesMapper: RatingChangeMapper) : RatingChangesRepository {
 
-    override suspend fun fetchratingchanges(callback: (List<RatingChangeBusinessModel>) -> Unit) {
+    override suspend fun fetchratingchanges(handle:String, callback: (List<RatingChangeBusinessModel>) -> Unit) {
 
         withContext(Dispatchers.IO){
-            apiService.fetchRatingChangesList().enqueue(object: Callback<RatingResponse> {
+            apiService.fetchRatingChangesList(handle).enqueue(object: Callback<RatingResponse> {
                 override fun onResponse(
                     call: Call<RatingResponse>,
                     response: Response<RatingResponse>
